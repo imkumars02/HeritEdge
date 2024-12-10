@@ -1,0 +1,121 @@
+.teacher-time-table-container {
+  padding: 30px;
+  background-color: #f4f7fc;
+  min-height: 100vh;
+  .teacher-time-table-heading {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #333;
+  }
+  .add-time-table-btn {
+    // display: inline-block;
+    padding: 12px 25px;
+    float: right;
+    background-color: #4f7bff;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    transition: background-color 0.3s ease;
+  }
+
+  .add-time-table-btn:hover {
+    background-color: #365fbb;
+  }
+  .time-table-form {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 600px;
+    margin: 3rem auto;
+    margin-bottom: 3rem;
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      background-color: #4f7bff;
+      color: #fff;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #365fbb;
+    }
+  }
+}
+
+.time-table-display {
+  width: 100%;
+  max-width: 50rem;
+  margin: 8rem auto;
+  .time-table-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .time-table-item {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      text-align: center;
+      h3 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 20px;
+      }
+      .time-table-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+  p {
+    font-size: 1rem;
+    // margin-top: 10rem;
+    color: #888;
+    text-align: center;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .time-table-form {
+    padding: 15px;
+  }
+
+  .time-table-form input,
+  .time-table-form button {
+    font-size: 0.9rem;
+  }
+
+  .time-table-item h3 {
+    font-size: 1.2rem;
+  }
+}

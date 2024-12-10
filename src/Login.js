@@ -24,7 +24,7 @@ const Login = () => {
         return;
       } else {
         //Login Functionality Here
-        navigate("/Student");
+        navigate("/Teacher");
       }
     } else if (activePanel === "admin") {
       if (!username.trim() || !password.trim()) {

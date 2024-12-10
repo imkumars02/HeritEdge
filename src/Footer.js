@@ -1,38 +1,74 @@
 import React from "react";
-import "./Footer.scss";
+import { Facebook, Twitter, Instagram, Github } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa"; // Import LinkedIn from react-icons
+import "./Footer.scss"; // Import the SCSS file
 import { Link } from "react-router-dom";
-import Robot from "./Robot";
 
 const Footer = () => {
-  const date = new Date();
-  const CurrentYear = date.getFullYear();
   return (
-    <>
-      <Robot />
-      <footer className="footer">
-        <div className="footer__container">
-          <div className="Footer1">&copy; {CurrentYear} HeritEdge</div>
-          <div className="Footer2">
-            <p>Condition of Use Privacy Notice Your Ads Privacy Choice</p>
-            <p>&copy; {CurrentYear} HeritEdge || All Rights Reserved.</p>
-          </div>
-          <div className="Footer3">
-            <p>
-              <h3 className="circle"> </h3> <Link to="/About">About us</Link>
-            </p>
-            <p>
-              <h3 className="circle"> </h3> <Link to="/Feedback">Feedback</Link>
-            </p>
-            <p>
-              <h3 className="circle"> </h3> <Link to="/About">Contact</Link>
-            </p>
-            <p>
-              <h3 className="circle"> </h3> <Link to="/FAQ">FAQ</Link>
-            </p>
-          </div>
+    <footer className="footer">
+      <div className="footer-container">
+        <div className="footer-logo">
+          <h1>Educational Portal</h1>
+          <p>All rights reserved</p>
         </div>
-      </footer>
-    </>
+
+        {/* <div className="footer-links">
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
+            <li>
+              <Link to="/help">Help</Link>
+            </li>
+          </ul>
+        </div> */}
+
+        <div className="footer-social">
+          <Link
+            to="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Facebook size={24} />
+          </Link>
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Twitter size={24} />
+          </a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Instagram size={24} />
+          </a>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin size={24} /> {/* LinkedIn from react-icons */}
+          </a>
+          <a
+            href="https://github.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Github size={24} />
+          </a>
+        </div>
+      </div>
+    </footer>
   );
 };
 

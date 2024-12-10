@@ -1,67 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Agdasima&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Agdasima&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
-@import "leaflet/dist/leaflet.css";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-::-webkit-scrollbar {
-  display: none;
-}
-/* Hide scrollbar */
-table::-webkit-scrollbar {
-  display: none;
-}
-:root {
-  --main-color: #8e44ad;
-  --red: #e74c3c;
-  --orange: #f39c12;
-  --white: #fff;
-  --black: #2c3e50;
-  --light-color: #888;
-  --light-bg: #eee;
-  --form-color:#5e52ff;
-  --border: 0.1rem solid rgba(0, 0, 0, 0.2);
-
-  --primary-color: #ff6b6b;
-  --secondary-color: #4ecdc4;
-  --background-color: #f7f7f7;
-  --text-color: #333333;
-  --form-bg: #ffffff;
-  --input-bg: #f0f0f0;
-  --button-hover: #ff8787;
-}
 * {
-  font-family: "Nunito", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: none;
-  border: none;
-  text-decoration: none;
-}
-html {
-  font-family: "Barlow", "san-serif";
-  overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 body {
-  background-color: var(--white);
   width: 100%;
-  min-height: 100vh;
-  overflow: auto;
-  /* padding: 1rem; */
-  /* background-color: rgb(235, 237, 236); */
-}
-body.dark {
-  --white: #222;
-  --black: #fff;
-  --light-color: #aaa;
-  --light-bg: #333;
-  --border: 0.1rem solid rgba(255, 255, 255, 0.2);
-}
-
-body.active {
-  padding: 0;
+  min-height: 100vh
 }
