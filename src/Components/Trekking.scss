@@ -1,0 +1,167 @@
+.page-container {
+  //   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.near-trekking-place {
+  flex: 1;
+  padding: 2rem;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+}
+
+.title img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.title h2 {
+  font-size: 2.4rem;
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  color: #333;
+}
+
+.trekking-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+  background-color: rgba(223, 211, 195, 1);
+}
+
+.trekking-card {
+  position: relative;
+  padding: 1rem;
+  transform: rotate(-1deg);
+}
+
+.trekking-card.reversed {
+  transform: rotate(2deg);
+}
+
+.card-content {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.trekking-card:hover .card-content {
+  transform: translateY(-5px);
+}
+
+.text-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+.text-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+}
+
+.text-content p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.location-icon {
+  margin-right: 0.5rem;
+}
+
+.image-content {
+  flex: 1;
+  max-width: 300px;
+  min-width: 250px;
+}
+
+.image-content img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.trekking-card.reversed .card-content {
+  flex-direction: row-reverse;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .title h2 {
+    font-size: 2rem;
+  }
+
+  .card-content {
+    flex-direction: column !important;
+    padding: 1rem;
+  }
+
+  .image-content {
+    max-width: 100%;
+  }
+
+  .text-content {
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+
+  .text-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .trekking-card,
+  .trekking-card.reversed {
+    transform: none;
+  }
+}
+
+/* Hover Effects */
+.card-content {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.trekking-card:hover .card-content::after {
+  opacity: 1;
+}

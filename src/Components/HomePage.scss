@@ -1,0 +1,178 @@
+.HomePageContainer {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+
+  .textMsg {
+    margin-top: 3.5rem;
+    text-align: center;
+    h4 {
+      font-weight: 600;
+      color: var(--black);
+      font-size: 2rem;
+      font-style: italic;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
+    p {
+      font-size: 1.5rem;
+      color: var(--black);
+    }
+  }
+
+  .ImageSlide {
+    width: 100%;
+    height: 300px;
+    margin-top: 3rem;
+    overflow: hidden;
+
+    .SliderContainer {
+      display: flex;
+      width: 400%;
+      height: 100%;
+      animation: slideShow 12s linear infinite;
+
+      .ImageContent {
+        width: 25%;
+        height: 100%;
+        padding: 0 0.5rem;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .PlanTrip {
+    width: 100%;
+    height: 8rem;
+    margin-top: 5rem;
+    background-color: rgba(223, 211, 195, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+    .TripContainer {
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--white);
+      width: 100%;
+      height: 100%;
+      transform: rotate(-3deg) translateY(-2rem);
+      transform-origin: right center;
+      border: 1px solid var(--black);
+      .PlanText {
+        h3 {
+          font-weight: 600;
+          font-size: 1.5rem;
+          color: var(--black);
+        }
+        p {
+          color: var(--black);
+          font-size: 1rem;
+        }
+      }
+      .PlanBtn {
+        a {
+          width: 3rem;
+          // border: 1px solid red;
+          padding: 1rem;
+          border-radius: 0.5rem;
+          background-color: rgba(197, 112, 93, 1);
+          color: var(--white);
+        }
+      }
+    }
+  }
+
+  .DescriptionContent {
+    margin-top: 4rem;
+    width: 100%;
+    height: auto;
+    .Text {
+      padding: 2rem;
+      font-size: 2rem;
+      font-family: "Barlow", sans-serif;
+      text-align: center;
+      font-size: 400;
+    }
+    .Content {
+      width: 100%;
+      padding: 3rem;
+      height: auto;
+      display: flex;
+      gap: 2rem;
+      .ContentImg {
+        width: 50%;
+        height: auto;
+        // padding: 2rem;
+        img {
+          float: right;
+          width: 80%;
+          height: 30rem;
+          border-radius: 0.5rem;
+        }
+      }
+      .ContentImg1 {
+        width: 50%;
+        height: auto;
+        // padding: 2rem;
+        img {
+          // float: right;
+          width: 80%;
+          height: 30rem;
+          border-radius: 0.5rem;
+        }
+      }
+      .ContentText {
+        width: 50%;
+        border-left: 2px solid #000;
+        height: auto;
+        padding: 0 2rem;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        h3 {
+          margin-top: 4rem;
+          font-size: 2rem;
+          font-weight: 600;
+        }
+        p {
+          margin-bottom: 4rem 0;
+          font-size: 1.5rem;
+        }
+      }
+      .ContentText1 {
+        width: 50%;
+        border-right: 2px solid #000;
+        height: auto;
+        padding: 0 2rem;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        h3 {
+          margin-top: 4rem;
+          font-size: 2rem;
+          font-weight: 600;
+        }
+        p {
+          margin-bottom: 4rem 0;
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideShow {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

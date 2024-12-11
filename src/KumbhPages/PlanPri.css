@@ -1,0 +1,153 @@
+.pilgrimage-section {
+  min-height: 100vh;
+  background: linear-gradient(rgba(28, 27, 51, 0.9), rgba(28, 27, 51, 0.9)),
+    url("../Images/planPriv.png") center/cover no-repeat;
+  color: white;
+  padding: 4rem 2rem;
+}
+
+.content-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.header-icon {
+  width: 48px;
+  height: 48px;
+  color: #ff6b6b;
+}
+
+.header h1 {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--white);
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  opacity: 0.9;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.navigation-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  .nav-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .nav-card:hover {
+    transform: translateX(10px);
+  }
+  .card-icon {
+    flex-shrink: 0;
+  }
+  
+  .nav-icon {
+    width: 32px;
+    height: 32px;
+    color: #ff6b6b;
+  }
+  
+  .card-content1 h2 {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem;
+  }
+  
+  .card-content1 p {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+}
+
+
+
+.image-collage {
+  position: relative;
+  height: 30rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 2rem;
+  img{
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.collage-image {
+  position: absolute;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+
+.collage-image:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+
+@media (max-width: 1024px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+
+  .image-collage {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pilgrimage-section {
+    padding: 2rem 1rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .nav-card {
+    padding: 1rem;
+  }
+
+  .image-collage {
+    height: 300px;
+  }
+}

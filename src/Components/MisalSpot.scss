@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap");
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.near-misal-spot-place {
+  flex: 1;
+  padding: 2rem;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+
+  img {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 0.5rem;
+    object-fit: cover;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    font-family: "Barlow", sans-serif;
+    font-weight: 600;
+    color: #333;
+  }
+}
+
+.misal-spot-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: rgba(223, 211, 195, 0.3);
+}
+
+.misal-spot-card {
+  position: relative;
+  padding: 1rem;
+  transform: rotate(-1deg);
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: rotate(0) scale(1.02);
+  }
+
+  &.reversed {
+    transform: rotate(1deg);
+
+    &:hover {
+      transform: rotate(0) scale(1.02);
+    }
+
+    .card-content {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+.card-content {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.text-content {
+  flex: 1;
+  padding: 1rem;
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #333;
+    font-family: "Barlow", sans-serif;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+  }
+}
+
+.location-icon {
+  margin-right: 0.5rem;
+}
+
+.image-content {
+  flex: 1;
+  max-width: 300px;
+  min-width: 250px;
+
+  img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    flex-direction: column;
+    text-align: center;
+
+    h1 {
+      font-size: 2rem;
+    }
+  }
+
+  .card-content {
+    flex-direction: column !important;
+    padding: 1rem;
+  }
+
+  .image-content {
+    max-width: 100%;
+  }
+
+  .text-content {
+    padding: 0;
+    margin-bottom: 1rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+
+  .misal-spot-card,
+  .misal-spot-card.reversed {
+    transform: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

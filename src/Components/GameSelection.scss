@@ -1,0 +1,84 @@
+.game-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 2rem;
+  font-family: "Roboto", sans-serif;
+  background-color: #fafafa;
+  height: 100vh;
+  color: #333;
+
+  h1 {
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+  }
+
+  .game-containers {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin-bottom: 2rem;
+  }
+
+  .game-container {
+    width: 250px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .game-card {
+      background: linear-gradient(135deg, #4e73df, #5cb85c);
+      padding: 2rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: linear-gradient(135deg, #357ae8, #4cae4c);
+      }
+
+      h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .game-description {
+        font-size: 1rem;
+        font-weight: 300;
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .selected-game {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #2ecc71;
+    margin-top: 2rem;
+  }
+}

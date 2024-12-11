@@ -1,0 +1,169 @@
+.user-profile-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+}
+
+.profile-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  background: var(--black);
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.profile-header {
+  background-color: #8b4543;
+  color: white;
+  padding: 1rem 2rem;
+
+  .user-name {
+    margin: 0;
+    font-size: 2rem;
+  }
+}
+
+.profile-content {
+  display: flex;
+  padding: 2rem;
+}
+
+.profile-left {
+  flex: 1;
+  margin-right: 2rem;
+}
+
+.cover-photo {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+
+  .change-cover-photo {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+  }
+}
+
+.profile-photo-container {
+  margin-top: -75px;
+  padding-left: 2rem;
+}
+
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid var(--white);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  .change-profile-photo {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+  }
+}
+
+.profile-right {
+  flex: 1;
+}
+
+.profile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 8px;
+    text-align: left;
+
+    &:hover {
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    &.logout {
+      color: #e74c3c;
+
+      &:hover {
+        background: #fee;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .profile-content {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .profile-left {
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+
+  .cover-photo {
+    height: 150px;
+  }
+
+  .profile-photo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-header .user-name {
+    font-size: 1.5rem;
+  }
+}

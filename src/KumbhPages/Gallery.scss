@@ -1,0 +1,114 @@
+/* General Container Styling */
+.galleryContainer {
+  padding: 40px;
+  background: linear-gradient(135deg, #0e0c29, #302b63, #24243e);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+
+  .galleryHeading {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    color: #f1f1f1;
+    text-transform: uppercase;
+  }
+
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Display 3 items per row */
+    gap: 30px;
+    justify-items: center;
+    max-width: 1200px; /* Set a max width for the gallery */
+    margin: 0 auto; /* Center the grid */
+  }
+
+  /* Video Thumbnail Styling */
+  .video-container {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: blur(5px);
+      transition: filter 0.3s ease;
+    }
+
+    .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 60px;
+      color: #fff;
+      text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover .play-icon {
+      opacity: 1;
+    }
+  }
+
+  /* Fullscreen Video Modal */
+  .fullscreen-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+
+    video {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .close-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 36px;
+      color: white;
+      cursor: pointer;
+      z-index: 1001;
+      transition: transform 0.3s ease;
+    }
+
+    .close-button:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  /* Keyframe animation for fade-in */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}

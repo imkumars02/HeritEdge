@@ -1,0 +1,55 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.25rem;
+  padding: 2rem;
+  min-height: calc(
+    100vh - 4rem
+  ); // Adjust this value based on your navbar and footer height
+}
+
+.CandyHead {
+  font-family: "Arial", sans-serif;
+  font-size: 2rem;
+  color: #ff6347;
+  margin-bottom: 1.25rem;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 5px;
+  width: 90vw;
+  max-width: 600px;
+  aspect-ratio: 1 / 1;
+}
+
+.CandyImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  object-fit: contain;
+}
+
+.CandyImg:hover {
+  transform: scale(1.1);
+}
+
+.CandyImg:active {
+  transform: scale(1);
+}
+
+@media (max-width: 600px) {
+  #board {
+    width: 90vw;
+    max-width: 90vw;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}

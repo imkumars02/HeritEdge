@@ -1,0 +1,101 @@
+.vr-booking-container {
+  width: 100%;
+  min-height: calc(100vh - 160px); // Adjust based on navbar and footer height
+  padding: 2rem 1rem;
+
+  .content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+
+    h1 {
+      font-size: 2.5rem;
+      color: #333;
+      margin: 0;
+      font-weight: 600;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: #666;
+      margin: 0;
+      font-weight: 400;
+
+      @media (max-width: 768px) {
+        font-size: 1.25rem;
+      }
+    }
+
+    .image-container {
+      width: 100%;
+      max-width: 400px;
+      margin: 2rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+      .temple-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      }
+    }
+
+    .buttons-container {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1rem;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        max-width: 100px;
+      }
+
+      button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background-color: #8b4543;
+        color: white;
+        min-width: 100px;
+
+        &:hover {
+          background-color: darken(#8b4543, 10%);
+          transform: translateY(-2px);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+
+        &.booking-button {
+          background-color: #8b4543;
+        }
+
+        &.ar-button {
+          background-color: #8b4543;
+        }
+
+        @media (max-width: 768px) {
+          width: 100%;
+          padding: 0.875rem 1.5rem;
+          font-size: 1.125rem;
+        }
+      }
+    }
+  }
+}

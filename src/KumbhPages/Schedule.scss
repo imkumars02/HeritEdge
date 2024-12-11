@@ -1,0 +1,172 @@
+.schedule-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+
+  .calendar-section {
+    margin-bottom: 3rem;
+
+    .calendar-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      position: relative;
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin: 0;
+      }
+
+      .calendar-nav {
+        position: absolute;
+        right: 0;
+        display: flex;
+        gap: 0.5rem;
+
+        .nav-button {
+          background: none;
+          border: none;
+          font-size: 1.2rem;
+          cursor: pointer;
+          padding: 0.5rem;
+          color: #666;
+
+          &:hover {
+            color: #333;
+          }
+        }
+      }
+    }
+
+    .calendar-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+
+      .calendar-cell {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: rgba(0, 123, 255, 0.1);
+        }
+
+        &.selected {
+          background-color: #007bff;
+          color: white;
+        }
+
+        .day {
+          font-size: 0.875rem;
+          color: inherit;
+          margin-bottom: 0.25rem;
+        }
+
+        .date {
+          font-size: 1rem;
+          font-weight: 500;
+          color: inherit;
+        }
+      }
+    }
+  }
+
+  .locations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+
+    .location-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
+
+      .location-info {
+        padding: 1rem;
+
+        .day-label {
+          font-size: 0.875rem;
+          color: #666;
+          margin-bottom: 0.5rem;
+        }
+
+        h3 {
+          margin: 0 0 0.5rem 0;
+          font-size: 1.25rem;
+          color: #333;
+        }
+
+        p {
+          margin: 0;
+          color: #666;
+          font-size: 0.875rem;
+        }
+      }
+
+      .location-image {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+
+      .directions-button {
+        display: block;
+        width: auto;
+        margin: 1rem;
+        padding: 0.5rem 1.5rem;
+        background-color: #8b4543;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+          background-color: darken(#8b4543, 10%);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .schedule-container {
+    .locations-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .calendar-grid {
+      flex-wrap: wrap;
+
+      .calendar-cell {
+        padding: 0.5rem;
+      }
+    }
+  }
+}
