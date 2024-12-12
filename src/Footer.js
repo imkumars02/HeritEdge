@@ -18,16 +18,16 @@ const Footer = () => {
           </div>
           <div className="Footer3">
             <p>
-              <h3 className="circle"> </h3> <Link to="/About">About us</Link>
+              <span className="circle"> </span> <Link to="/About">About us</Link>
             </p>
             <p>
-              <h3 className="circle"> </h3> <Link to="/Feedback">Feedback</Link>
+              <span className="circle"> </span> <Link to="/Feedback">Feedback</Link>
             </p>
             <p>
-              <h3 className="circle"> </h3> <Link to="/About">Contact</Link>
+              <span className="circle"> </span> <Link to="/About">Contact</Link>
             </p>
             <p>
-              <h3 className="circle"> </h3> <Link to="/FAQ">FAQ</Link>
+              <span className="circle"> </span> <Link to="/FAQ">FAQ</Link>
             </p>
           </div>
         </div>

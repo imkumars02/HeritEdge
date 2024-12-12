@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from "react";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  Polyline,
-} from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./Map.scss";
-// import { MapPin } from "lucide-react";
+import DirectionsManager from "./DirectionsManager";
 
-// Importing images
 import trimbakImage from "./Images/Map/trimbak.jpeg";
 import kalaramImage from "./Images/Map/kalaram.jpeg";
 import kapaleshwarImage from "./Images/Map/kapaleshwar.jpeg";
@@ -25,7 +18,8 @@ import Footer from "./Footer";
 const Map = () => {
   const [map, setMap] = useState(null);
   const [selectedLanguage, setSelectedLanguage] = useState("en");
-  const [currentRoute, setCurrentRoute] = useState(null);
+  const [userLocation, setUserLocation] = useState(null);
+  const [selectedNode, setSelectedNode] = useState(null);
 
   const kumbhNodes = [
     {
@@ -114,48 +108,31 @@ const Map = () => {
     },
   ];
 
-  const routes = {
-    "Railway Station": [
-      [19.9916, 73.7836],
-      [20.008, 73.7835],
-      [20.013, 73.763],
-      [19.9987, 73.7948],
-      [19.9946, 73.7881],
-      [20.011, 73.7689],
-      [19.9773, 73.7749],
-      [19.9404, 73.5389],
-      [19.931, 73.511],
-    ],
-    "Bus Stand": [
-      [19.9972, 73.7843],
-      [20.008, 73.7835],
-      [20.013, 73.763],
-      [19.9987, 73.7948],
-      [20.01, 73.76],
-      [20.011, 73.7689],
-      [19.9773, 73.7749],
-      [19.931, 73.511],
-      [20.0004, 73.7901],
-    ],
-    Airport: [
-      [20.1198, 73.9124],
-      [20.013, 73.763],
-      [19.9987, 73.7948],
-      [19.985, 73.783],
-      [20.011, 73.7689],
-      [19.9773, 73.7749],
-      [19.9404, 73.5389],
-      [19.931, 73.511],
-    ],
-  };
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setUserLocation([latitude, longitude]);
+        },
+        (error) => {
+          console.error("Error getting user location:", error);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  }, []);
 
   useEffect(() => {
-    if (!map) return;
-  
-    const bounds = kumbhNodes.map((node) => node.coords);
+    if (!map || !userLocation) return;
+
+    const bounds = L.latLngBounds([
+      userLocation,
+      ...kumbhNodes.map((node) => node.coords),
+    ]);
     map.fitBounds(bounds);
-  }, [map, kumbhNodes]); // Add kumbhNodes as a dependency
-  
+  }, [map, userLocation, kumbhNodes]);
 
   const handleLanguageChange = (e) => {
     setSelectedLanguage(e.target.value);
@@ -172,20 +149,30 @@ const Map = () => {
   };
 
   const handleMarkerClick = (node) => {
+    setSelectedNode(node);
     speak(node.info[selectedLanguage], selectedLanguage);
   };
 
-  const displayRoute = (startingPoint) => {
-    const route = routes[startingPoint];
-    setCurrentRoute(route);
-    if (map) {
-      map.fitBounds(route);
+  const handleNodeSelection = (e) => {
+    const selectedNodeName = e.target.value;
+    const node = kumbhNodes.find((n) => n.name === selectedNodeName);
+    setSelectedNode(node);
+    if (map && node) {
+      map.setView(node.coords, 13);
     }
   };
 
   const customIcon = L.divIcon({
     className: "custom-icon",
     html: `<div style="color: #0000FF;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>`,
+    iconSize: [24, 24],
+    iconAnchor: [12, 24],
+    popupAnchor: [0, -24],
+  });
+
+  const userIcon = L.divIcon({
+    className: "user-icon",
+    html: `<div style="color: #FF0000;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg></div>`,
     iconSize: [24, 24],
     iconAnchor: [12, 24],
     popupAnchor: [0, -24],
@@ -209,15 +196,18 @@ const Map = () => {
             <option value="es">Spanish</option>
             <option value="fr">French</option>
           </select>
-          <label htmlFor="starting-point">Select Starting Point:</label>
+          <label htmlFor="kumbh-node">Select Kumbh Place:</label>
           <select
-            id="starting-point"
-            onChange={(e) => displayRoute(e.target.value)}
+            id="kumbh-node"
+            onChange={handleNodeSelection}
+            value={selectedNode ? selectedNode.name : ""}
           >
-            <option value="">Select a starting point</option>
-            <option value="Railway Station">Railway Station</option>
-            <option value="Bus Stand">Bus Stand</option>
-            <option value="Airport">Airport</option>
+            <option value="">Select a Kumbh Place</option>
+            {kumbhNodes.map((node) => (
+              <option key={node.name} value={node.name}>
+                {node.name}
+              </option>
+            ))}
           </select>
         </div>
         <MapContainer
@@ -229,6 +219,11 @@ const Map = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
+          {userLocation && (
+            <Marker position={userLocation} icon={userIcon}>
+              <Popup>Your Location</Popup>
+            </Marker>
+          )}
           {kumbhNodes.map((node, index) => (
             <Marker
               key={index}
@@ -249,9 +244,10 @@ const Map = () => {
               </Popup>
             </Marker>
           ))}
-          {currentRoute && (
-            <Polyline positions={currentRoute} color="blue" weight={4} />
-          )}
+          <DirectionsManager
+            userLocation={userLocation}
+            selectedNode={selectedNode}
+          />
         </MapContainer>
       </div>
       <Footer />
