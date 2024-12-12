@@ -4,6 +4,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./Map.scss";
 import DirectionsManager from "./DirectionsManager";
+import { calculateDistance } from "./utils/distance";
 
 import trimbakImage from "./Images/Map/trimbak.jpeg";
 import kalaramImage from "./Images/Map/kalaram.jpeg";
@@ -20,6 +21,7 @@ const Map = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const [userLocation, setUserLocation] = useState(null);
   const [selectedNode, setSelectedNode] = useState(null);
+  const [nearestNodes, setNearestNodes] = useState([]);
 
   const kumbhNodes = [
     {
@@ -102,7 +104,7 @@ const Map = () => {
         hi: "सिता गुफा पंचवटी क्षेत्र में नासिक केंद्रीय बस स्टैंड से लगभग 3 किलोमीटर की दूरी पर स्थित है। कहा जाता है कि सीता ने वनवास के दौरान कुछ दिनों तक इस गुफा में निवास किया था। पहली मुख्य गुफा में राम, सीता और लक्ष्मण की प्रतिमाएँ रखी गई हैं। दूसरी छोटी गुफा में एक शिवलिंग है। शिवलिंग के होने का मुख्य कारण यह है कि सीता भगवान शिव की पूजा किया करती थीं और उनकी पूजा के बिना भोजन ग्रहण नहीं करती थीं।",
         mr: "सीता गुफा ही ऐतिहासिक गुहा आहे जिथे सीतेने वनवासाच्या काळात काही काळ व्यतीत केला असे मानले जाते.",
         es: "La cueva de Sita es una cueva histórica donde se cree que Sita permaneció durante su exilio.",
-        fr: "La grotte de Sita est une grotte historique où l'on pense que Sita est restée pendant son exil.",
+        fr: "Lagrotte de Sita est une grotte historique où l'on pense que Sita est restée pendant son exil.",
       },
       image: sitaImage,
     },
@@ -125,14 +127,33 @@ const Map = () => {
   }, []);
 
   useEffect(() => {
-    if (!map || !userLocation) return;
+    if (!userLocation) return;
+
+    const nodesWithDistances = kumbhNodes.map((node) => ({
+      ...node,
+      distance: calculateDistance(
+        userLocation[0],
+        userLocation[1],
+        node.coords[0],
+        node.coords[1]
+      ),
+    }));
+
+    const sortedNodes = nodesWithDistances.sort(
+      (a, b) => a.distance - b.distance
+    );
+    setNearestNodes(sortedNodes.slice(0, 3));
+  }, [userLocation]);
+
+  useEffect(() => {
+    if (!map || !userLocation || nearestNodes.length === 0) return;
 
     const bounds = L.latLngBounds([
       userLocation,
-      ...kumbhNodes.map((node) => node.coords),
+      ...nearestNodes.map((node) => node.coords),
     ]);
     map.fitBounds(bounds);
-  }, [map, userLocation, kumbhNodes]);
+  }, [map, userLocation, nearestNodes]);
 
   const handleLanguageChange = (e) => {
     setSelectedLanguage(e.target.value);
@@ -155,7 +176,7 @@ const Map = () => {
 
   const handleNodeSelection = (e) => {
     const selectedNodeName = e.target.value;
-    const node = kumbhNodes.find((n) => n.name === selectedNodeName);
+    const node = nearestNodes.find((n) => n.name === selectedNodeName);
     setSelectedNode(node);
     if (map && node) {
       map.setView(node.coords, 13);
@@ -203,7 +224,7 @@ const Map = () => {
             value={selectedNode ? selectedNode.name : ""}
           >
             <option value="">Select a Kumbh Place</option>
-            {kumbhNodes.map((node) => (
+            {nearestNodes.map((node) => (
               <option key={node.name} value={node.name}>
                 {node.name}
               </option>
@@ -224,7 +245,7 @@ const Map = () => {
               <Popup>Your Location</Popup>
             </Marker>
           )}
-          {kumbhNodes.map((node, index) => (
+          {nearestNodes.map((node, index) => (
             <Marker
               key={index}
               position={node.coords}
